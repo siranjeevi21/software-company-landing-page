@@ -1,0 +1,282 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme colors */
+:root {
+  --e-global-color-secondary: #FFFFFF;
+  --e-global-color-primary: #9B96B0;
+  --e-global-color-text: #FFFFFF;
+  --e-global-color-accent: #FFFFFF2B;
+  --e-global-color-d49ac81: #B47CFD;
+  --e-global-color-332724a: #FF7FC2;
+  --e-global-color-4d462f5: #241A30;
+  --e-global-color-cfa1f76: #0F0520;
+  --e-global-color-7fbea4f: #18023A;
+  --e-global-color-c94d9ab: #2B2338;
+  --e-global-color-044b931: #0A0118;
+  --e-global-color-638d055: #0A0316;
+  --e-global-color-ec3c7a7: #B47CFD;
+  --e-global-color-3ee16e7: #FF7FC2;
+  --e-global-color-cfd5506: #FFB07B;
+  --e-global-color-080118FA: #080118FA;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
+/* Define custom utility classes */
+@layer components {
+  .bg-dark {
+    background-color: var(--e-global-color-080118FA);
+  }
+
+  .bg-light {
+    background-color: var(--e-global-color-secondary); /* Using white for light background */
+  }
+
+  .bg-transparent {
+    background-color: transparent;
+  }
+
+  .text-light {
+    color: var(--e-global-color-text);
+  }
+
+  .text-muted {
+    color: var(--e-global-color-accent);
+  }
+
+  .text-background-color {
+    color: var(--e-global-color-4d462f5); /* Using dark color for text background */
+  }
+
+  .border-light {
+    border-color: var(--e-global-color-d49ac81); /* Using accent color */
+  }
+
+  /* Gradient button */
+  .btn-gradient {
+    @apply text-white font-semibold py-2 px-6 rounded-full;
+    background: linear-gradient(90deg, var(--e-global-color-primary), var(--e-global-color-332724a));
+    transition: background 0.3s ease;
+  }
+
+  .btn-gradient:hover {
+    background: linear-gradient(90deg, var(--e-global-color-332724a), var(--e-global-color-primary));
+  }
+
+  /* Headings */
+  .heading-lg {
+    @apply text-4xl font-bold text-light;
+  }
+
+  .heading-md {
+    @apply text-2xl font-semibold text-light;
+  }
+
+  .heading-sm {
+    @apply text-xl font-semibold text-light;
+  }
+
+  /* Section title with gradient text */
+  .section-title {
+    @apply text-4xl font-bold text-transparent bg-clip-text;
+    background-image: linear-gradient(90deg, var(--e-global-color-primary), var(--e-global-color-332724a));
+  }
+
+  /* Custom button for “Get Started” */
+  .get-started-btn {
+    @apply text-white py-2 px-6 font-bold rounded-full;
+    background: linear-gradient(90deg, var(--e-global-color-primary), var(--e-global-color-332724a));
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .get-started-btn:hover {
+    @apply scale-105;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Learn more button */
+  .learn-more-btn {
+    @apply text-light border border-light py-2 px-6 rounded-full font-semibold;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .badge {
+    @apply text-light border border-light rounded-full font-semibold px-5 py-1.5 text-center text-sm transition-all shadow-sm text-white;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .learn-more-btn:hover {
+    @apply bg-light text-background-color;
+  }
+
+ /* Card hover effect with glitter-like border */
+  .card {
+    @apply p-12 rounded-lg shadow-lg relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: radial-gradient(
+      circle at center,
+      rgba(45, 25, 65, 1) 0%,
+      rgba(28, 19, 40, 1) 100%
+    );
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+  }
+
+  .card2 {
+    @apply p-12 rounded-lg shadow-lg relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: radial-gradient(
+      circle at center,
+      rgba(45, 25, 65, 1) 0%,
+      rgba(28, 19, 40, 1) 100%
+    );
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition */
+  }
+
+  /* Add a glitter effect to the border on hover with smaller density */
+  .card:hover {
+    box-shadow: 0 0 8px 2px rgba(255, 192, 203, 0.6), 0 0 16px 8px rgba(255, 192, 203, 0.4); /* Lighter glitter effect */
+  }
+
+  /* Optional: Pink glow effect */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    height: 40%;
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 192, 203, 0.3) 0%,
+      rgba(255, 192, 203, 0.15) 30%,
+      rgba(255, 192, 203, 0) 70%
+    );
+    transform: translate(-50%, -50%);
+    filter: blur(60px);
+    z-index: -1;
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  /* Subtle animation for the glowing effect */
+  @keyframes pulseGlow {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.4; }
+    100% { opacity: 0.2; }
+  }
+
+
+  /* Text styling */
+  .card h1 {
+    @apply text-4xl font-bold text-white mb-12;
+    text-align: center;
+  }
+  
+  .logo-grid {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .logo-marquee {
+    display: inline-flex;
+    animation: scrollMarquee 20s linear infinite;
+  }
+
+  .logo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1.5rem;
+    color: white;
+    font-size: 3rem; /* Adjust icon size as needed */
+    transition: transform 0.2s ease;
+  }
+
+  .company-name {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: white;
+  }
+
+  @keyframes scrollMarquee {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  .testimonial-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+  }
+  
+  .testimonial-card:hover {
+    transform: scale(1.02);
+  }
+
+  @layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent glass effect */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 0.5rem;
+  }
+
+  .btn-gradient {
+    background: linear-gradient(90deg, var(--e-global-color-primary), var(--e-global-color-332724a));
+    color: white;
+  }
+
+  .confirmation-message {
+    position: absolute;
+    bottom: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    animation: fadeInOut 3s ease forwards;
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+  }
+}
+
+}
+
+/* Custom classes for your styles */
+.bg-primary { @apply bg-primaryBg; }
+.text-accent { @apply text-accentPink; }
+.border-button { @apply border border-white; }
